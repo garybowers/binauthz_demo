@@ -19,3 +19,7 @@ gcloud beta container binauthz attestations sign-and-create \
     --keyversion-keyring="${KMS_KEYRING_NAME}" \
     --keyversion-key="${KMS_KEY_NAME}" \
     --keyversion="${KMS_KEY_VERSION}"
+
+gcloud --project=${ATTESTATION_PROJECT_ID} \
+    container binauthz create-signature-payload \
+    --artifact-url=${IMAGE_PATH}@${IMAGE_DIGEST} > /tmp/generated_payload.json
