@@ -1,0 +1,12 @@
+
+gcloud kms asymmetric-sign \
+        --location=${KMS_KEY_LOCATION} \
+        --keyring=${KMS_KEYRING_NAME} \
+        --key=${KMS_KEY_NAME} \
+        --version=${KMS_KEY_VERSION} \
+        --digest-algorithm=sha512 \
+        --input-file=/tmp/generated_payload.json \
+        --signature-file=/tmp/ec_signature \
+        --project ${KMS_KEY_PROJECT_ID}
+
+gcloud container binauthz attestors describe demo-attestor

@@ -1,0 +1,7 @@
+tf/terraform.tfstate
+tf/terraform.tfstate.*
+tf/.terraform
+tf/terraform.tfvars
+_secure/*
+_secure/
+_secure/key.json

@@ -1,0 +1,21 @@
+export ATTESTOR_PROJECT_ID=binauth-demo-cicd-774203
+export ATTESTATION_PROJECT_ID=binauth-demo-cicd-774203
+export IMAGE_TO_ATTEST=europe-west1-docker.pkg.dev/binauth-demo-cicd-774203/central-repo/demo@sha256:fa0219b2e45d49d0831e5aca6be5703445cf00890153def1f29cb1f47f635e64
+export KMS_KEY_PROJECT_ID=binauth-demo-cicd-774203 
+export KMS_KEY_LOCATION=global
+export KMS_KEYRING_NAME=test-attestor-key-ring
+export KMS_KEY_NAME=test-attestor-key
+export KMS_KEY_VERSION=1
+export ATTESTOR_NAME=demo-attestor
+export NOTE_ID=test-attestor-note
+
+gcloud beta container binauthz attestations sign-and-create \
+    --project="${ATTESTATION_PROJECT_ID}" \
+    --artifact-url="${IMAGE_TO_ATTEST}" \
+    --attestor="${ATTESTOR_NAME}" \
+    --attestor-project="${ATTESTOR_PROJECT_ID}" \
+    --keyversion-project="${KMS_KEY_PROJECT_ID}" \
+    --keyversion-location="${KMS_KEY_LOCATION}" \
+    --keyversion-keyring="${KMS_KEYRING_NAME}" \
+    --keyversion-key="${KMS_KEY_NAME}" \
+    --keyversion="${KMS_KEY_VERSION}"

@@ -1,0 +1,13 @@
+gcloud container binauthz attestations list \
+  --attestor-project=${ATTESTOR_PROJECT_ID} \
+  --attestor=${ATTESTOR_NAME}
+
+
+projects/ATTESTOR_PROJECT_ID/occurrences/OCCURRENCE_ID
+
+OCCURRENCE_ID=OCCURRENCE_ID
+
+
+curl -H "Authorization: Bearer $(gcloud auth print-access-token)" -X DELETE \
+  https://containeranalysis.googleapis.com/v1beta1/projects/${ATTESTATION_PROJECT_ID}/occurrences/${OCCURRENCE_ID}
+
